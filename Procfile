@@ -1,0 +1,1 @@
+web - gunicorn bugtracker_project.wsgi --log-file -

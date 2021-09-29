@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '6+ant+tet#+!rn(^pj4&3e$u4d%mdn4#pom@w+e%+!iskdq_8o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['trackem-bugtracker.herokuapp.com', 'localhost']
 
 
 # Application definition
