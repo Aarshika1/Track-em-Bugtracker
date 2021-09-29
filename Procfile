@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath bugtracker_project bugtracker_project.wsgi --log-files -
+web: gunicorn --pythonpath bugtracker_project bugtracker_project.wsgi 
