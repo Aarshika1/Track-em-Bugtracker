@@ -49,7 +49,7 @@
         </table>
         </div>
         <div class="flex-container">
-            <button type="button" id="add-project" class="my-2 btn btn-outline-primary" onclick="openbugform({{project.id}})">add bug</button>
+            <button type="button" id="add-project" class="my-2 btn btn-outline-primary"><a hred = "{% url 'bugform' project.id %}">add bug</a></button>
         </div>
         <div class="flex-container">
             <button type="button" class="my-2 btn btn-outline-primary"><a href = "{% url 'project' %}">Back to Projects</a></button>
