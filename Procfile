@@ -1,1 +1,0 @@
-web: gunicorn bugtracker_project/bugtracker_project.wsgi 
