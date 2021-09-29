@@ -1,0 +1,22 @@
+{% extends 'projects_app/base.html' %}
+{% block home %}
+    <style>
+
+        .gif{
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .img {
+            width: 200px;
+        }
+    </style>
+    <div class="container mt-3">
+        <h1 align="center">Track'em</h1>
+        <h2 align="center">A bug tracker for your projects</h2>
+    <div>
+    <div class="gif">
+        {% load static %} <img src="{% static "media/bug.gif" %}" class = "center">
+    </div>
+{% endblock home %}

@@ -1,0 +1,58 @@
+{% extends 'projects_app/base.html' %}
+{% block bug %}
+    <div class="container">
+        <h1 class="display-4 project-name">{{project.name}}</h1>
+        <div class="content-section">
+        <div>
+            <form class = "form-inline justify-content-center" method="get">
+                {{Filter.form.as_p}}
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+        </div>
+        <div class ="content-section">
+        <table class="table mt-5"> 
+            <thead>
+                <th scope="col">Serial number</th>
+                <th scope="col">Bug</th>
+                <th scope="col">User</th>
+                <th scope="col">Priority</th>
+                <th scope="col">State</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                {% for bug in bugs_list %}
+
+                    <tr class="bug-row">
+                        <th scope="row"> {{forloop.counter}} </th>
+                        <td><a href=" {% url 'bug_view' project.id bug.id %}">{{bug.name}}</a></td>
+                        <td>{{bug.assigned_user}}</td>
+                        <td>{{bug.get_priority_display}}</td>
+                        <td>{{bug.get_state_display}}</td>
+                        <td>
+                            <a href=" {% url 'bug_update' project.id bug.id %} "title="Edit Item">
+                                <span class="material-icons edit-icon">
+                                    edit
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href=" {% url 'bug_delete' project.id bug.id %} "title="Delete Item">
+                                <span class="material-icons delete-icon">
+                                    delete
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <div class="flex-container">
+            <button type="button" id="add-project" class="my-2 btn btn-outline-primary" onclick="openbugform({{project.id}})">add bug</button>
+        </div>
+        <div class="flex-container">
+            <button type="button" class="my-2 btn btn-outline-primary"><a href = "{% url 'project' %}">Back to Projects</a></button>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'projects_app/base.html' %}
+{% block project %}
+
+    <div class="container mt-3">
+        <h1 align="center">Start Tracking</h1>
+        <div class="content-section">
+        <div>
+            <form class = "form-inline justify-content-center" method="get">
+                {{Filter.form.as_p}}
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+        </div>
+        <div class="content-section">
+        <table class="table mt-5"> 
+            <thead>
+                <th scope="col">Serial number</th>
+                <th scope="col">Project Name</th>
+                <th scope="col">Sector</th>
+                <th scope="col">Technologies</th>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                    <tr>
+                        <th scope="row"> {{forloop.counter}} </th>
+                        <td><a href="{% url 'viewproject' project.id %}">{{project.name}}</a></td>
+                        <td>{{project.sector}}</td>
+                        <td>{{project.technology}}</td>
+                        <td>
+                            <a href=" {% url 'bug_list' project.id %} "> Bugs </a>
+                        </td>
+                        <td>
+                            <a href=" {% url 'updateproject' project.id %} "title="Edit Item">
+                                <span class="material-icons edit-icon">
+                                    edit
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href=" {% url 'project_delete' project.id %} "title="Delete Item">
+                                <span class="material-icons delete-icon">
+                                    delete
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+        <div class="flex-container">
+            <button type="button" id="add-project" class="mt-5 btn btn-outline-primary" onclick="openprojectform()">Add Project</button>
+        </div>
+
+        <nav class="mt-5 pagination" aria-label="Page navigation">
+            {% if projects.has_other_pages %}
+                <ul class="pagination">
+                    {% if projects.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ projects.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                    {% endif %}
+                    
+                    {% for i in projects.paginator.page_range %}
+                        {% if projects.number == i %}
+                            <li class="page-item active">
+                                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if projects.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ projects.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {% else %}
+
+                        <li class="page-item disabled">
+                            <span class="page-link">&raquo;</span>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </nav>
+
+    </div>
+
+{% endblock project %}

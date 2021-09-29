@@ -1,0 +1,67 @@
+<!-- By Aarshika Singh -->
+{% load static %}  
+<!DOCTYPE html>  
+<html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Bug Tracker</title>  
+        <!-- External files -->
+        <link rel="stylesheet" href="{% static 'bootstrap-4.3.1/css/bootstrap.min.css' %}" >  
+        <script type="text/javascript" src="{% static 'bootstrap-4.3.1/js/bootstrap.min.js' %}"></script>  
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bugs_list.css' %}">
+        <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+        <link rel="stylesheet" href="{% static 'css/table.css' %}">
+        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&family=Nunito+Sans:wght@300&family=Playfair+Display&family=Red+Rose&family=Rowdies:wght@700&display=swap" rel="stylesheet">
+        <style>
+          .logout_button{
+          font-size: 18px;
+          color: white;
+          margin-right: 20px;}
+        </style>
+         
+    </head>  
+    <body>  
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a  href="{% url 'home' %}" class = "logout_button">Home <span class="sr-only">(current)</span></a>
+                  <a  href="{% url 'project' %}" class = "logout_button">Projects <span class="sr-only">(current)</span></a>
+                </li>
+                </ul>
+            </div>
+            <span><a href="{% url 'profile' %}" class = "logout_button">Welcome: {{request.user}}</a></span>
+            <span><a href="{% url 'logout' %}" class = "logout_button">Logout</a></span>
+          </nav>
+
+        {% block addprojectform %}
+        {% endblock addprojectform %}
+
+        {% block home %}
+        {% endblock home %}
+
+        {% block project %}
+        {% endblock project %}
+
+        {% block viewprojectform %}
+        {% endblock viewprojectform %}
+        
+        {% block bug %}
+        {% endblock bug %}     
+
+        {% block addbugform %}
+        {% endblock addbugform %}  
+        
+        {% block viewbugform %}
+        {% endblock viewbugform %} 
+
+        {% block profile %}
+        {% endblock profile %} 
+    </body>  
+</html>  

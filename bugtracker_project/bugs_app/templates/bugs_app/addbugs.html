@@ -1,0 +1,39 @@
+{% extends 'projects_app/base.html' %}
+{% block addbugform %}
+
+    <div class="container">
+        <h1 align = "center">Bug</h1>
+        <form class="mt-5" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Bug Type
+                </label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                {{ form.desc }}
+            </div>
+            <div class="form-group">
+                <label for="assigned_user">User</label>
+                {{ form.assigned_user }}
+            </div>
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                {{ form.priority }}
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                {{ form.state }}
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                {{ form.comments }}
+            </div>
+            
+            
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+{% endblock  %}

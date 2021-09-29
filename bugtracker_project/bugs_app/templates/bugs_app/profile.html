@@ -1,0 +1,48 @@
+{% extends 'projects_app/base.html' %}
+{% block profile %}
+    <style>
+    .content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    }
+    </style>
+    <h1 align ="center">Profile Page</h1>
+    <div class="content-section">
+        <div class="media-body">
+            <h2 class="account-heading">Username: {{ user.username }}</h2>
+            <p class="text-secondary">Email: {{ user.email }}</p>
+        </div>
+    </div>
+    <div class="content-section">
+ <div class="container mt-3">
+     <h2 align = "center">My Tickets</h2>
+        <table class="table mt-5"> 
+            <thead>
+                <th scope="col">Serial number</th>
+                <th scope="col">Bug Name</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Status</th>
+            </thead>
+            <tbody>
+                {% for bug in bugs %}
+                    <tr>
+                        <th scope="row"> {{forloop.counter}} </th>
+                        <td>{{bug.name}}</td>
+                        <td>{{bug.get_priority_display}}</td>
+                        <td>{{bug.get_state_display}}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+       
+    </div>
+
+    </div>
+
+
+{% endblock profile %}

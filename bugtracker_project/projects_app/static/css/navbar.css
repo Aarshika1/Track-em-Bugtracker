@@ -1,0 +1,14 @@
+
+#add-project{
+    text-transform: uppercase;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+} 
+.logout_button{
+    font-size: 18px;
+    color: white;
+    margin-right: 20px;
+}
